@@ -1,0 +1,14 @@
+Salas para ser agendadas
+
+1 - Espaço Relax;
+2 - Midiateca;
+3 - Sala de Espera;
+4 - Sala de jogos 1;
+5 - Sala de jogos 2;
+6 - Laboratório de informática;
+7 - Parque;
+8 - Campo;
+9 - Auditório espaço vida;
+10 - Auditório Nelson Elias;
+11 - Laboratório tecnológico;
+12 - Laboratório prático.
