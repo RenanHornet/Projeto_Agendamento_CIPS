@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         if ($usuario) {
             
-            if ($senha == $usuario['senha']) {
+            if (password_verify($senha, $usuario['senha'])) {
                 
                 
                 $_SESSION['usuario_id'] = $usuario['id'];
@@ -34,10 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 exit();
 
             } else {
-                echo "Senha incorreta!";
+                echo "<script>alert('Senha incorreta!'); window.history.back();</script>";
             }
         } else {
-            echo "E-mail não cadastrado!";
+            echo "<script>alert('E-mail não cadastrado!'); window.history.back();</script>";
         }
 
     } catch (PDOException $e) {

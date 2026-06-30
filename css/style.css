@@ -16,6 +16,7 @@ body {
     display:flex;
     justify-content: center;
     align-items: center;
+    position: relative;
     
 }
 
@@ -41,6 +42,32 @@ main{
     display: flex;
     flex-direction: column;
     
+}
+
+.listaReservas{
+    background-color: rgba(235, 241, 241, 0.843);
+    width:100%;
+    max-height: 565px;
+    max-width: 500px;
+    overflow-y: auto; /*adiciona a barra de rolagem vertical*/
+    padding-right: 10px;
+    text-align: left;
+    border: 2px solid #050505;
+    border-radius: 10px;
+    padding: 30px;
+}
+/*Estilização da barra de rolagem*/
+.listaReservas::-webkit-scrollbar {
+    width:6px;
+}
+
+.listaReservas::-webkit-scrollbar-thumb{
+    background-color: rgba(3, 12, 143, 0.3); /*azul com opacidade*/
+    border-radius: 10px;
+}
+
+.listaReservas::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(3, 12, 143); /*Destaca o azul ao passar o mouse*/
 }
 
 .divFooter {
@@ -124,6 +151,18 @@ input[type="checkbox"] {
     transform: scale(1.2);
     margin-right: 10px;
     cursor: pointer;
+}
+
+.imagemLogo{
+    position: absolute;
+    left: 1px;
+    display: flex;
+    align-items: center;
+}
+
+.imagemLogo img{
+    height: 200px;
+    width: auto;
 }
 
 @media (max-widith:768px){

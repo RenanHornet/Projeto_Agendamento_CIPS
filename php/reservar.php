@@ -17,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     // Verifica se o checkbox "dia_todo" foi marcado
     if (isset($_POST['dia_todo']) && $_POST['dia_todo'] == '1') {
-        $inicio = '07:00:00';
-        $fim    = '23:00:00';
+        $inicio = '08:00:00';
+        $fim    = '17:00:00';
     } else {
         $inicio = $_POST['hora_inicio'];
         $fim    = $_POST['hora_fim'];

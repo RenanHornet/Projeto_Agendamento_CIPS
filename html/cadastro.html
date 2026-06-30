@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendamento de salas CIPS</title>
+    <title>Cadastre-se</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <header>
+   <header>
         
         <div class="divHeader">
             <div class="imagemLogo">
@@ -18,17 +18,19 @@
     </header>
     <main>
         <div class="container">
-            <h2>Acesse sua conta</h2>
-               <form action="../php/login.php" method="POST" class>
+            <h2>Cadastre-se</h2>
+               <form action="../php/cadastrar.php" method="POST">
+                <label for="nome" class="formFont">Nome:</label>
+                <input type="text" id="nome" name="nome" class="formInput"><br><br>
+
                 <label for="email" class="formFont">Email:</label>
                 <input type="email" id="email" name="email" class="formInput"> <br><br>
         
                 <label for="senha" class="formFont">Senha:</label>
                 <input type="password" id="senha" name="senha" class="formInput" required> <br><br>
         
-                <button type="submit" class="button">Login</button>
-            </form> <br><br>
-            <a href="cadastro.html">cadastrar-se</a>
+                <button type="submit" class="button">Cadastrar</button>
+            </form>
         </div>
     </main>
     <footer>

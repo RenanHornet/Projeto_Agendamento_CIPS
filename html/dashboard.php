@@ -11,10 +11,10 @@ if (!isset($_SESSION['usuario_id'])) {
 try {
     
     $sql = "SELECT r.*, u.nome AS usuario_nome, s.nome AS sala_nome 
-            FROM reservas r 
-            JOIN usuarios u ON r.id_usuario = u.id 
-            JOIN salas s ON r.id_sala = s.id 
-            ORDER BY r.data_reserva ASC, r.hora_inicio ASC";
+    FROM reservas r 
+    JOIN usuarios u ON r.id_usuario = u.id 
+    JOIN salas s ON r.id_sala = s.id 
+    ORDER BY r.data_reserva ASC, r.hora_inicio ASC";
     
     $stmt = $pdo->query($sql);
     $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -31,9 +31,13 @@ try {
     <title>Agendamento de Salas</title>
 </head>
 <body>
-    <header>
+   <header>
+        
         <div class="divHeader">
-            <h1>Agendamento de Salas CIPS</h1>
+            <div class="imagemLogo">
+                <img src="../images/logo_cips.png" class="imagemLogo" alt="Logo CIPS">
+            </div>
+            <h1>Agendamento de salas </h1>
         </div>
     </header>
             
@@ -80,23 +84,23 @@ try {
         </div>
             
 
-        <div class="container">
+        <div class="listaReservas">
             <h2>Salas Agendadas</h2>
-            <div class="lista-reservas" style="text-align: left; width: 100%;">
-                
+          <div>
                 <?php if (empty($reservas)): ?>
                     <p style="text-align: center;">Nenhuma sala agendada no momento.</p>
                 <?php else: ?>
                     <?php foreach ($reservas as $reserva): ?>
                         <div class="item-reserva" style="margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #ccc;">
                             <p><strong>Usuário:</strong> <?= htmlspecialchars($reserva['usuario_nome']) ?></p>
-                            <p><strong>Sala:</strong> <?= htmlspecialchars($reserva['id_sala']) ?></p> 
+                            
+                            <p><strong>Sala:</strong> <?= htmlspecialchars($reserva['sala_nome']) ?></p> 
+                            
                             <p><strong>Data:</strong> <?= date('d/m/Y', strtotime($reserva['data_reserva'])) ?></p>
                             <p><strong>Horário:</strong> <?= substr($reserva['hora_inicio'], 0, 5) ?> às <?= substr($reserva['hora_fim'], 0, 5) ?></p>
                         </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
-
             </div>
         </div>
         <div class="container">
