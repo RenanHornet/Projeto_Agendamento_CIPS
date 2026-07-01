@@ -7,6 +7,10 @@ body {
     min-height: 100vh;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 .divHeader {
     width: 100%;
     height: 100px;
@@ -26,8 +30,12 @@ main{
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
-    gap:30px;
+    gap:10px;
     padding: 40px 20px;
+}
+
+h2{
+    text-align: center;
 }
 
 .container{
@@ -46,28 +54,26 @@ main{
 
 .listaReservas{
     background-color: rgba(235, 241, 241, 0.843);
-    width:100%;
-    max-height: 565px;
-    max-width: 500px;
-    overflow-y: auto; /*adiciona a barra de rolagem vertical*/
-    padding-right: 10px;
-    text-align: left;
+    width: 100%;
+    max-width: 400px;
     border: 2px solid #050505;
     border-radius: 10px;
     padding: 30px;
+    display: flex;
+    flex-direction: column;
 }
 /*Estilização da barra de rolagem*/
-.listaReservas::-webkit-scrollbar {
-    width:6px;
+.scrollInterno::-webkit-scrollbarr{
+    width: 6px;
 }
 
-.listaReservas::-webkit-scrollbar-thumb{
-    background-color: rgba(3, 12, 143, 0.3); /*azul com opacidade*/
+.scrollInterno::-webkit-scrollbarr-thumb{
+    background-color: rgba(3, 12, 143, 0.3);
     border-radius: 10px;
 }
 
-.listaReservas::-webkit-scrollbar-thumb:hover {
-    background-color: rgb(3, 12, 143); /*Destaca o azul ao passar o mouse*/
+.scrollInterno::-webkit-scrollbar-thumb:hover{
+    background-color: rgba(3, 12, 143);
 }
 
 .divFooter {
@@ -165,14 +171,115 @@ input[type="checkbox"] {
     width: auto;
 }
 
-@media (max-widith:768px){
+.itemReserva {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+
+}
+
+.navegacaoData{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f4f4f4;
+    padding: 12px 15px;  
+    margin-bottom: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    width: 100%;             
+    box-sizing: border-box;  
+    max-width: 100%;
+}
+
+.btnSeta {
+   text-decoration: none;
+    color: rgb(3, 12, 143);
+    font-weight: bold;
+    font-size: 14px;
+    padding: 8px 16px;   
+    border-radius: 4px;
+    transition: background 0.2s;
+    display: inline-flex; 
+    align-items: center;  
+    white-space: nowrap
+}
+
+.btnSair {
+    position: absolute;
+    right: 20px;          
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 8px 16px;
+    border: 1px solid white;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+
+.btnSair:hover {
+    background-color: white;
+    color: rgb(3, 12, 143); 
+}
+
+@media (max-width:768px){
+    .divHeader{
+        height: auto;
+        flex-direction: column;
+        padding: 20px 15px;
+        gap: 12px;
+    }
+
+    .imagemLogo{
+        position: relative;
+        left: 0;
+        justify-content: center;
+        height: auto;
+    }
+
+    .imagemLogo img{
+        height: 90px;
+        width: auto;
+    }
+
+    .divHeader h1{
+        font-size: 1.3rem;
+        margin: 0;
+    }
+
     main{
         flex-direction: column;
         align-items: center;
+        padding: 20px 10px;
+        gap: 20px
     }
 
-    .container{
-        width: 95%;
+    .container, .listaReservas {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .formInput,
+    .formData,
+    .formSala,
+    select, 
+    input[type="date"],
+    input[type="time"] {
+        width: 100%;
+    }
+
+    .button{
+        width: 80%;
+    }
+
+    .btnSair{
+        position: relative;
+        right: 0;
+        width: auto;
+        border-color: rgba(255, 255, 255, 0.5);
+
     }
 }
 

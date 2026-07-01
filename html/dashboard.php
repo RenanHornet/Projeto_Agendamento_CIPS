@@ -8,16 +8,47 @@ if (!isset($_SESSION['usuario_id'])) {
     exit();
 }
 
+//pega a data atual do SO
+$data_filtro = isset($_GET['data']) ? $_GET['data'] : date('Y-m-d');
+
+//calcula o dia anterior e o próximo dia
+$data_anterior = date('Y-m-d', strtotime($data_filtro . '-1 day'));
+$data_proxima = date('Y-m-d', strtotime($data_filtro . '+1 day'));
+
 try {
     
     $sql = "SELECT r.*, u.nome AS usuario_nome, s.nome AS sala_nome 
     FROM reservas r 
     JOIN usuarios u ON r.id_usuario = u.id 
     JOIN salas s ON r.id_sala = s.id 
-    ORDER BY r.data_reserva ASC, r.hora_inicio ASC";
+    WHERE r.data_reserva = :data_filtro
+    ORDER BY r.hora_inicio ASC";
     
-    $stmt = $pdo->query($sql);
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':data_filtro' => $data_filtro]);
     $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Erro ao buscar reservas: " . $e->getMessage());
+}
+
+try {
+    
+    $sql_grafico = "SELECT s.nome AS sala_nome, COUNT(r.id) AS total_reservas 
+    FROM reservas r 
+    JOIN salas s ON r.id_sala = s.id 
+    GROUP BY r.id_sala
+    ORDER BY total_reservas DESC";
+    
+    $stmt_grafico = $pdo->query($sql_grafico);
+    $dados_grafico = $stmt_grafico->fetchAll(PDO::FETCH_ASSOC);
+
+    $nomes_salas = [];
+    $quantidades = [];
+
+    foreach ($dados_grafico as $linha) {
+        $nomes_salas[] = $linha['sala_nome'];
+        $quantidades[] = $linha['total_reservas'];
+    }
 } catch (PDOException $e) {
     die("Erro ao buscar reservas: " . $e->getMessage());
 }
@@ -31,13 +62,13 @@ try {
     <title>Agendamento de Salas</title>
 </head>
 <body>
-   <header>
-        
+   <header>    
         <div class="divHeader">
             <div class="imagemLogo">
                 <img src="../images/logo_cips.png" class="imagemLogo" alt="Logo CIPS">
             </div>
             <h1>Agendamento de salas </h1>
+            <a href="../php/logout.php" class= "btnSair">Sair ➔</a>
         </div>
     </header>
             
@@ -83,19 +114,26 @@ try {
             </form>
         </div>
             
-
         <div class="listaReservas">
             <h2>Salas Agendadas</h2>
-          <div>
+            
+            <div class="navegacaoData">
+                <a href="dashboard.php?data=<?= $data_anterior ?>" class="btnSeta">&lt; Anterior</a>
+                <span class="dataAtual">
+                    📅 <?= date('d/m/Y', strtotime($data_filtro)) ?> 
+                    <?= ($data_filtro == date('Y-m-d')) ? '<strong>(Hoje)</strong>' : '' ?>
+                </span>
+                <a href="dashboard.php?data=<?= $data_proxima ?>" class="btnSeta">Próximo &gt;</a>
+            </div> 
+
+            <div class="scrollInterno">
                 <?php if (empty($reservas)): ?>
                     <p style="text-align: center;">Nenhuma sala agendada no momento.</p>
                 <?php else: ?>
                     <?php foreach ($reservas as $reserva): ?>
-                        <div class="item-reserva" style="margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #ccc;">
+                        <div class="itemReserva">
                             <p><strong>Usuário:</strong> <?= htmlspecialchars($reserva['usuario_nome']) ?></p>
-                            
                             <p><strong>Sala:</strong> <?= htmlspecialchars($reserva['sala_nome']) ?></p> 
-                            
                             <p><strong>Data:</strong> <?= date('d/m/Y', strtotime($reserva['data_reserva'])) ?></p>
                             <p><strong>Horário:</strong> <?= substr($reserva['hora_inicio'], 0, 5) ?> às <?= substr($reserva['hora_fim'], 0, 5) ?></p>
                         </div>
@@ -104,7 +142,11 @@ try {
             </div>
         </div>
         <div class="container">
-            <h2>Horários de Aulas</h2> 
+            <h2>Indicadores de Uso</h2>
+            <h3>Salas mais requisitadas:</h3>
+            <div style="position: relative; width: 100%; height: 300px;">
+                <canvas id= "graficoSalas"></canvas>
+            </div>
         </div>
     </main>
    
@@ -116,5 +158,37 @@ try {
     </footer>
 
     <script src="../javascript/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // Passa os arrays do PHP diretamente para variáveis do JavaScript
+        const labelsSalas = <?php echo json_encode($nomes_salas); ?>;
+        const dadosReservas = <?php echo json_encode($quantidades); ?>;
+        // Configura e renderiza o gráfico de Pizza
+        const ctx = document.getElementById('graficoSalas').getContext('2d');
+        new Chart(ctx, {
+            type: 'pie', // 🔥 MUDANÇA AQUI: Alterado de 'bar' para 'pie'
+            data: {
+                labels: labelsSalas,
+                datasets: [{
+                    label: 'Total de Agendamentos',
+                    data: dadosReservas,
+                    // 💡 Dica extra para o gráfico de pizza abaixo:
+                    backgroundColor: [
+                        'rgba(3, 12, 143, 0.7)',  /* Azul CIPS */
+                        'rgba(255, 159, 64, 0.7)', /* Laranja */
+                        'rgba(75, 192, 192, 0.7)', /* Verde Água */
+                        'rgba(153, 102, 255, 0.7)',/* Roxo */
+                        'rgba(255, 99, 132, 0.7)'  /* Rosa/Vermelho */
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    </script>
 </body>
 </html>
