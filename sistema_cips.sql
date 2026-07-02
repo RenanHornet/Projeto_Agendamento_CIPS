@@ -1,19 +1,17 @@
-CREATE DATABASE sistema_cips;
-USE sistema_cips;
 
-CREATE TABLE usuarios (
+CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL -- Guardaremos o hash da senha aqui!
 );
 
-CREATE TABLE salas (
+CREATE TABLE IF NOT EXISTS salas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE reservas (
+CREATE TABLE IF NOT EXISTS reservas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_sala INT NOT NULL,
     id_usuario INT NOT NULL,
@@ -24,8 +22,11 @@ CREATE TABLE reservas (
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
 );
 
-INSERT INTO usuarios (nome, email, senha) 
-VALUES ('Renan Teste', 'renan@teste.com', '123456');
+-- ====================================================================
+-- INSERÇÃO DE DADOS INICIAIS (Apenas cadastros de controle)
+-- ====================================================================
+
+-- Cadastrando previamente as 12 salas oficiais para alimentar o gráfico do Dashboard
 
 INSERT INTO salas (nome) VALUES 
 ('Espaço Relax'), 
