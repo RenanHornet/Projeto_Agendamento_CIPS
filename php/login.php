@@ -1,10 +1,11 @@
 <?php
+//elimina a sessão para salvar dados de usuário logado
 session_start();
 
-
+// importao o arquivo de conexão com o banco de dados
 require_once 'conexao.php';
 
-
+//verifica se o método do formulario é POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     

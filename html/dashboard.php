@@ -175,11 +175,18 @@ try {
                     data: dadosReservas,
                     // 💡 Dica extra para o gráfico de pizza abaixo:
                     backgroundColor: [
-                        'rgba(3, 12, 143, 0.7)',  /* Azul CIPS */
-                        'rgba(255, 159, 64, 0.7)', /* Laranja */
-                        'rgba(75, 192, 192, 0.7)', /* Verde Água */
-                        'rgba(153, 102, 255, 0.7)',/* Roxo */
-                        'rgba(255, 99, 132, 0.7)'  /* Rosa/Vermelho */
+                        'rgba(3, 12, 143, 0.7)',   /* 1. Azul CIPS (Principal) */
+                        'rgba(255, 159, 64, 0.7)',  /* 2. Laranja */
+                        'rgba(75, 192, 192, 0.7)',  /* 3. Verde Água */
+                        'rgba(153, 102, 255, 0.7)', /* 4. Roxo */
+                        'rgba(255, 99, 132, 0.7)',  /* 5. Rosa/Vermelho */
+                        'rgba(54, 162, 235, 0.7)',  /* 6. Azul Claro */
+                        'rgba(255, 206, 86, 0.7)',  /* 7. Amarelo */
+                        'rgba(46, 204, 113, 0.7)',  /* 8. Verde Esmeralda */
+                        'rgba(230, 126, 34, 0.7)',  /* 9. Laranja Escuro */
+                        'rgba(155, 89, 182, 0.7)',  /* 10. Púrpura */
+                        'rgba(26, 188, 156, 0.7)',  /* 11. Turquesa */
+                        'rgba(127, 140, 141, 0.7)'  /* 12. Cinza Neutro */
                     ],
                     borderWidth: 1
                 }]
