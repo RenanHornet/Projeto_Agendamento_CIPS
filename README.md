@@ -1,6 +1,6 @@
 # 🏫 CIPS - Sistema de Agendamento de Salas
 
-O **CIPS - Agendamento de Salas** é uma aplicação web completa, leve e responsiva desenvolvida para gerenciar a reserva de espaços e salas de uma instituição de ensino/atendimento. O projeto foca em entregar uma experiência de usuário (UX) fluida, controle estrito de segurança no backend e indicadores visuais para tomada de decisão.
+O **CIPS - Agendamento de Salas** é uma aplicação web completa, leve e responsiva desenvolvida para gerenciar a reserva de espaços e salas de uma Organização de Sociedade Cível que atende crianças. O projeto foca em entregar uma experiência de usuário (UX) fluida, controle estrito de segurança no backend e indicadores visuais para tomada de decisão.
 
 ---
 
@@ -46,4 +46,4 @@ Developed by RenanHornet🚀
 ### Passo a Passo
 1. Clone o repositório para a pasta do seu servidor local (ex: `htdocs` ou `www`):
    ```bash
-   git clone [https://github.com/seu-usuario/cips-agendamento-salas.git](https://github.com/seu-usuario/cips-agendamento-salas.git)
+   git clone [https://github.com/seu-usuario/Projeto_Agendamento_CIPS](https://github.com/seu-usuario/Projeto_Agendamento_CIPS)
