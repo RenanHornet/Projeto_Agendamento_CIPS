@@ -8,7 +8,7 @@ if(!isset($_SESSION['usuario_id'])) {
 }
 
 //verifica se o ID da reserva foi enviado pelo URL (via método GET)
-if (isset($_GET['id']) && !empty($_POST['id'])) {
+if (isset($_POST['id']) && !empty($_POST['id'])) {
     $id_reserva = $_POST ['id'];
     $id_usuario = $_SESSION['usuario_id'];
     
