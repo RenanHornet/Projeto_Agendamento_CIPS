@@ -216,6 +216,16 @@ input[type="checkbox"] {
     color: rgb(3, 12, 143); 
 }
 
+.btnCancelar {
+    background-color: rgb(3, 12, 143) !important;
+    color: white !important;
+    border-radius: 20px;
+}
+
+.btnCancelar:hover{
+    background-color: #c82333 !important;
+    
+}
 @media (max-width:768px){
     .divHeader{
         height: auto;

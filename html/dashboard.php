@@ -136,6 +136,10 @@ try {
                             <p><strong>Sala:</strong> <?= htmlspecialchars($reserva['sala_nome']) ?></p> 
                             <p><strong>Data:</strong> <?= date('d/m/Y', strtotime($reserva['data_reserva'])) ?></p>
                             <p><strong>Horário:</strong> <?= substr($reserva['hora_inicio'], 0, 5) ?> às <?= substr($reserva['hora_fim'], 0, 5) ?></p>
+                            <form action="../php/cancelar_reserva.php" method="POST" style="display: inline">
+                                <input type="hidden" name="id" value="<?php echo $reserva['id']?>">
+                                <button type="submit" class="btnCancelar" onclick="return confirm('Tem certeza que deseja cancelar este agendamento?');"> Cancelar</button>
+                            </form>
                         </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
