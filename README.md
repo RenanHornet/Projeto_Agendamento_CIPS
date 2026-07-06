@@ -14,6 +14,22 @@ O **CIPS - Agendamento de Salas** é uma aplicação web completa, leve e respon
 
 ---
 
+## 🔗 Link do Projeto Online
+Acesse o sistema publicado na internet através do link abaixo:
+👉 [**Visualizar CIPS Online**](https://sala-cips.freehosting.dev/)
+
+> 💡 *Nota: O sistema está hospedado em um servidor gratuito. Caso o link esteja temporariamente offline, você pode rodá-lo localmente seguindo as instruções abaixo.*
+
+## 📸 Demonstração do Sistema
+
+### Tela de Dashboard e Gráficos
+![Dashboard do CIPS](prints/dashboard.png)
+
+### Tela de Login Seguro
+![Login CIPS](prints/login.png)
+
+---
+
 ## 🛠️ Tecnologias Utilizadas
 
 * **Backend:** PHP 8.x (Arquitetura limpa com manipulação de sessões nativas)
@@ -46,4 +62,4 @@ Developed by RenanHornet🚀
 ### Passo a Passo
 1. Clone o repositório para a pasta do seu servidor local (ex: `htdocs` ou `www`):
    ```bash
-   git clone [https://github.com/seu-usuario/Projeto_Agendamento_CIPS](https://github.com/seu-usuario/Projeto_Agendamento_CIPS)
+   git clone https://github.com/RenanHornet/Projeto_Agendamento_CIPS.git

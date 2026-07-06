@@ -226,6 +226,12 @@ input[type="checkbox"] {
     background-color: #c82333 !important;
     
 }
+
+.linkGit{
+    color: #fff;
+    font-weight: bold;
+    text-decoration: underline;
+}
 @media (max-width:768px){
     .divHeader{
         height: auto;
