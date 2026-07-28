@@ -9,7 +9,7 @@ O **CIPS - Agendamento de Salas** é uma aplicação web completa, leve e respon
 * **🔒 Autenticação e Segurança:** Controle de acesso seguro por meio de sessões PHP (`session_start`). Senhas criptografadas no banco de dados e proteção contra acessos diretos a arquivos restritos.
 * **📅 Dashboard Dinâmico:** Painel de controle com navegação cronológica (anterior/próximo dia) para visualização rápida das salas ocupadas em tempo real.
 * **📊 Indicadores de Uso (BI):** Gráfico de pizza/rosca interativo integrado via **Chart.js**, exibindo em tempo real as salas mais requisitadas para auxiliar a diretoria no planejamento de espaços.
-* **📱 Interface 100% Responsiva:** Layout customizado via CSS Grid/Flexbox estruturado do zero, adaptando-se perfeitamente de monitores desktop a telas de smartphones (Mobile-First mindset no cabeçalho e formulários).
+* **📱 Interface 100% Responsiva:** Layout customizado via CSS Grid/Flexbox estruturado do zero, adaptando-se perfeitamente de monitores desktop a telas de smartphones (Mobile-First mindset no cabeçalho e formulários) e aplicação do framework BootsTrap 5.
 * **♻️ Rolagem Inteligente:** Containers internos isolados para listagem de dados, impedindo que grandes volumes de agendamentos quebrem o design da página.
 
 ---
@@ -23,10 +23,10 @@ Acesse o sistema publicado na internet através do link abaixo:
 ## 📸 Demonstração do Sistema
 
 ### Tela de Dashboard e Gráficos
-![Dashboard do CIPS](prints/dashboard.png)
+![Dashboard do CIPS](prints/dashboard_bootstrap.png)
 
 ### Tela de Login Seguro
-![Login CIPS](prints/login.png)
+![Login CIPS](prints/index_bootstrap.png)
 
 ---
 
@@ -34,7 +34,7 @@ Acesse o sistema publicado na internet através do link abaixo:
 
 * **Backend:** PHP 8.x (Arquitetura limpa com manipulação de sessões nativas)
 * **Banco de Dados:** MySQL / MariaDB utilizando a extensão **PDO** (proteção nativa contra SQL Injection)
-* **Frontend:** HTML5, CSS3 (Customizado, sem frameworks pesados como Bootstrap)
+* **Frontend:** HTML5, CSS3 e Bootstrap.
 * **Gráficos e Inteligência:** JavaScript Puro (Vanilla JS) + **Chart.js** (via CDN)
 
 ---
