@@ -207,7 +207,7 @@ try {
 
     <footer>
         <div class="divFooter">
-            <p class="mb-0">Desenvolvido por Renan Albino Horne (<a href="https://github.com/RenanHornet" target="_blank" class="linkGit">GitHub</a>)</p>
+            <p class="mb-0">Desenvolvido por Renan Albino Horne (<a href="https://github.com/RenanHornet" target="_blank" class="linkGit"><i class="bi bi-github"></i>GitHub</a>)</p>
         </div>    
     </footer>
 
